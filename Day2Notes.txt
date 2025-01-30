@@ -1,0 +1,191 @@
+#!/bin/bash
+#Author :SB
+#Purpose:Learning function with parameter
+#usage: ./regularExpression.sh
+ 
+numString="AecsEabcd"
+# if [[ $numString =~ ^1 ]]; then
+#     echo "$numString starts with 1"
+# fi
+ 
+ 
+if [[ $numString =~ ^[1.7] ]]; then
+    echo "$numString starts with 1 and 7 is prsent in the String"
+fi
+ 
+if [[ $numString =~ ^1.*8 ]]; then
+    echo "$numString starts with 1 and 8 is prsent in the String"
+fi
+ 
+if [[ $numString =~ ^[A-Za-z]+$ ]]; then
+    echo "The letter in $numString contains A to Z and a to z"
+fi
+ 
+--------------------x----------------------
+
+#!/bin/bash
+#Author :SB
+#Purpose:Learning function with parameter
+#usage: ./linuxshell.sh
+ 
+echo "I am $USERNAME. $USERNAME is a tiger"
+echo "my current working directory is `pwd`"
+echo "`who`"
+echo "`date`"
+ls
+
+----------------------x-----------------
+#!/bin/bash
+while getopts :a:b: flag;do
+    case $flag in
+        a) ab=$OPTARG;;
+        b) bc=$OPTARG;;
+        ?) echo "I dont understand this value"
+        esac
+done
+    echo "first value $ab, second value $bc"
+
+---------------x----------------------
+
+#!/bin/bash
+#Author :SB
+#Purpose:Learning function with parameter
+#usage: ./demoProj.sh
+ 
+echo "Enter the number of Physics"
+read -r pM
+echo "Enter the number of Chemistry"
+read -r cM
+echo "Enter the number of Math"
+read -r mM
+ 
+if [ "$pM" -lt 35 ] || [ "$cM" -lt 35 ] || [ "$mM" -lt 35 ]; then
+    echo "Sorry, You have failed"
+else
+    tm=$((pM + cM + mM))
+    avgM=$((tm / 3))
+   
+    if [[ "$avgM" -gt 80 ]]; then
+        echo "Excellent and average is $avgM"
+    elif [[ "$avgM" -gt 60 ]]; then
+        echo "First Class and average is $avgM"
+    elif [[ "$avgM" -gt 45 ]]; then
+        echo "Second Class and average is $avgM"
+    fi
+fi
+
+--------------------x-----------------
+
+#!/bin/bash
+#Author :SB
+#Purpose:Learning function with parameter
+#usage: ./cricket.sh
+ 
+echo "please enter the number"
+read -r no
+ 
+if [[ $no -le 20 ]]; then
+    echo "more score needed"
+elif [[ $no -gt 20 && $no -le 40 ]]; then
+    echo "average score"
+else
+    echo "excellent"
+fi
+ 
+for i in 1 2 3 4 5
+do
+    echo "$i"
+done
+ 
+for i in {1..5};
+do
+    echo "$1"
+done
+ 
+for i in $(seq 1 5);
+do
+    echo "$i"
+done
+ 
+for (( i=1; i<10; i++));
+do
+    echo "$i"
+done
+
+---------------x--------------------
+
+#!/bin/bash
+#Author :SB
+#Purpose:Learning function with parameter
+#usage: ./basiclearning.sh
+ 
+command="ls -ltr /etc"
+echo "$command"
+eval $command
+
+------------------x-----------------
+
+#!/bin/bash
+#Author :SB
+#Purpose:Learning function with parameter
+#usage: ./backupfile.sh
+ 
+function backup {
+    echo "Enter the the file name"
+    read -r mf
+    if [ -f $mf ]; then
+        echo "file exists"
+        cp $mf /tmp/test.sh
+    else    
+        echo "file not found"
+    fi
+    if [ $? -ne 0 ]; then
+        echo "backup failed $?"
+    fi
+}
+backup
+
+--------------------x-----------------
+
+#!/bin/bash
+#Author :SB
+#Purpose:Learning function with parameter
+#usage: ./autopopulate.sh
+ 
+echo "all arguments combined together $*"
+echo "no. of arguments $#"
+echo "first $1"
+echo "expands all the command line on separate words $@"
+echo "ProcessId of the current process $$"
+ 
+sleep 400 &
+echo "ProcessId of the recently background process $!"
+echo "file name of the current programm $0"
+
+----------------x------------------
+
+echo "Please enter the time"
+read -r no
+ 
+current_hour=$(date +%H)
+ 
+if [[ $current_hour -gt 0  && $current_hour -lt 12 ]]; then
+    echo "Good MORNING"
+elif [[ $current_hour -gt 12 && $current_hour -lt 16 ]]; then
+    echo "Good Afternoon"
+elif [[ $current_hour -gt 16 && $current_hour -lt 20 ]]; then
+    echo "Good Evening"
+elif [[ $current_hour -gt 20 && $current_hour -lt 24 ]]; then
+    echo "Good Night"
+fi
+
+---------------------x------------------
+
+set -x
+set `date`
+echo "Today is $1"
+echo "Month is $2"
+echo "Date is $3"
+echo "Year is $4"
+echo "Time is $5"
+echo "AM/PM is $6"
